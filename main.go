@@ -24,8 +24,8 @@ func main() {
 	router.POST("/callbackAfterSetFriendRemark", control.CallbackAfterSetFriendRemark)
 	router.POST("/callbackSingleMsgRead", control.CallbackSingleMsgRead)
 	router.POST("/callbackBeforeSendSingleMsgCommand", control.CallbackBeforeSendSingleMsgCommand)
-	router.POST("/callbackUserOfflineCommand", control.CallbackOfflinePush)
-	router.POST("/callbackUserOnlineCommand", control.CallbackOnlinePush)
+	router.POST("/callbackOfflinePushCommand", control.CallbackOfflinePush)
+	router.POST("/callbackOnlinePushCommand", control.CallbackOnlinePush)
 	if err := engine.Run("0.0.0.0:18889"); err != nil {
 		panic(err)
 	}
