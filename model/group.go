@@ -314,6 +314,33 @@ type UserInfo struct {
 	AppMangerLevel   int32  `protobuf:"varint,6,opt,name=appMangerLevel,proto3" json:"appMangerLevel"`
 	GlobalRecvMsgOpt int32  `protobuf:"varint,7,opt,name=globalRecvMsgOpt,proto3" json:"globalRecvMsgOpt"`
 }
+type UserStatusBaseCallback struct {
+	CallbackCommand string `json:"callbackCommand"`
+	OperationID     string `json:"operationID"`
+	PlatformID      int    `json:"platformID"`
+	Platform        string `json:"platform"`
+}
+type UserStatusBatchCallbackReq struct {
+	UserStatusBaseCallback
+	UserIDList []string `json:"userIDList"`
+}
+type CallbackBeforePushReq struct {
+	UserStatusBatchCallbackReq
+	OfflinePushInfo
+	ClientMsgID string   `json:"clientMsgID"`
+	SendID      string   `json:"sendID"`
+	GroupID     string   `json:"groupID"`
+	ContentType int32    `json:"contentType"`
+	SessionType int32    `json:"sessionType"`
+	AtUserIDs   []string `json:"atUserIDList"`
+	Content     string   `json:"content"`
+}
+
+type CallbackBeforePushResp struct {
+	CommonCallbackResp
+	UserIDs         []string        `json:"userIDList"`
+	OfflinePushInfo OfflinePushInfo `json:"offlinePushInfo"`
+}
 
 type CallbackBeforeSendSingleMsgReq struct {
 	CommonCallbackReq

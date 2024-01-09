@@ -410,3 +410,41 @@ func CallbackBeforeSendSingleMsgCommand(c *gin.Context) {
 	fmt.Printf("%#v", resp)
 	c.JSON(http.StatusOK, resp)
 }
+func CallbackOfflinePush(c *gin.Context) {
+	var req model.CallbackBeforePushReq
+	if err := c.BindJSON(&req); err != nil {
+		fmt.Printf("err:%v", err)
+		return
+	}
+	fmt.Printf("%#v", req)
+	resp := &model.CallbackBeforePushResp{
+		CommonCallbackResp: model.CommonCallbackResp{
+			ActionCode: 0,
+			ErrCode:    200,
+			ErrMsg:     "Success",
+			ErrDlt:     "Successful",
+			NextCode:   2,
+		},
+	}
+	fmt.Printf("%#v", resp)
+	c.JSON(http.StatusOK, resp)
+}
+func CallbackOnlinePush(c *gin.Context) {
+	var req model.CallbackBeforePushReq
+	if err := c.BindJSON(&req); err != nil {
+		fmt.Printf("err:%v", err)
+		return
+	}
+	fmt.Printf("%#v", req)
+	resp := &model.CallbackBeforePushResp{
+		CommonCallbackResp: model.CommonCallbackResp{
+			ActionCode: 0,
+			ErrCode:    200,
+			ErrMsg:     "Success",
+			ErrDlt:     "Successful",
+			NextCode:   2,
+		},
+	}
+	fmt.Printf("%#v", resp)
+	c.JSON(http.StatusOK, resp)
+}
